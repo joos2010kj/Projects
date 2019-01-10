@@ -26,3 +26,18 @@ If you are interested, please feel free to try them yourself by downloading the 
     - Follower has a character inside that continues to follow the cursor of the client and changes its color when the cursor is within its angle of vision. This is part of VISION Project.
     
         *[SCREENSHOT](https://github.com/joos2010kj/Projects/blob/master/JavaScript/VISION/Follower/Screen%20Shot/SS.png)*
+
+3. [Treasure Hunt](https://github.com/joos2010kj/Projects/tree/master/JavaScript/Treasure%20Hunt)
+    - Treasure Hunt is part of an online multiplayer game project I am currently working on.  In Treasure Hunt, every object is denoted by its own unique color, as following:
+    
+        Open Field: BLACK
+        Uncrossable Barrier: WHITE
+        Player: GREEN
+        Monster: RED
+        TREASURE: PURPLE
+    
+    The objective of Treasure Hunt is to collect all the treasures there are in the map by stepping on it, while avoiding contacts with monsters.  Monsters, which will later be developed into other players, are animate bots, and they have the power to "eat" both the player and treasures.  Thus, it is in the player's advantage to act quickly.  As a guide, the shape of the map that the player is in is shown in the upper left corner.
+    
+    Partial credits of this project is given to John Conway, whose "Game of Life" algorithm helped me come up with an algorithm for randomly-generated contiguous lands.
+    
+    *[SCREENSHOTS](https://github.com/joos2010kj/Projects/tree/master/JavaScript/Treasure%20Hunt/SS)
