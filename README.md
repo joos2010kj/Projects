@@ -30,14 +30,14 @@ If you are interested, please feel free to try them yourself by downloading the 
 3. [Treasure Hunt](https://github.com/joos2010kj/Projects/tree/master/JavaScript/Treasure%20Hunt)
     - Treasure Hunt is part of an online multiplayer game project I am currently working on.  In Treasure Hunt, every object is denoted by its own unique color, as following:
     
-        Open Field: BLACK
-        Uncrossable Barrier: WHITE
-        Player: GREEN
-        Monster: RED
-        TREASURE: PURPLE
+        - Open Field: BLACK
+        - Uncrossable Barrier: WHITE
+        - Player: GREEN
+        - Monster: RED
+        - TREASURE: PURPLE
     
-    The objective of Treasure Hunt is to collect all the treasures there are in the map by stepping on it, while avoiding contacts with monsters.  Monsters, which will later be developed into other players, are animate bots, and they have the power to "eat" both the player and treasures.  Thus, it is in the player's advantage to act quickly.  As a guide, the shape of the map that the player is in is shown in the upper left corner.
+        The objective of Treasure Hunt is to collect all the treasures in the map by stepping on it, while avoiding contacts with monsters.  Monsters, which will later be developed into other players in a multiplayer game, are animate bots, and they have the power to "eat" both the player and treasures.  Once any monster makes a direct contact with the player, the player dies, and the player can restart the game by refreshing the page.  Thus, it is in the player's advantage to act quickly.  As a guide, the shape of the map that the player is in is shown in the upper left corner.
     
-    Partial credits of this project is given to John Conway, whose "Game of Life" algorithm helped me come up with an algorithm for randomly-generated contiguous lands.
+        Partial credits of this project is given to John Conway, whose "Game of Life" algorithm helped me come up with an algorithm for randomly-generated contiguous lands.
     
-    *[SCREENSHOTS](https://github.com/joos2010kj/Projects/tree/master/JavaScript/Treasure%20Hunt/SS)
+        *[SCREENSHOT 1-8](https://github.com/joos2010kj/Projects/tree/master/JavaScript/Treasure%20Hunt/SS)*
