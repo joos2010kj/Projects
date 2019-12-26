@@ -40,6 +40,6 @@ If you are interested, please feel free to try them yourself by downloading the 
     
         Partial credits of this project is given to John Conway, whose "Game of Life" algorithm helped me come up with an algorithm for randomly-generated contiguous lands.
         
-        [GAME URL](treasure-hunt.unaux.com)
+        [GAME URL](http://treasure-hunt.unaux.com)
     
         *[SCREENSHOT 1-8](https://github.com/joos2010kj/Projects/tree/master/JavaScript/Treasure%20Hunt/SS)*
