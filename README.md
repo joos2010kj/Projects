@@ -39,5 +39,7 @@ If you are interested, please feel free to try them yourself by downloading the 
         The objective of Treasure Hunt is to collect all the treasures in the map by stepping on it, while avoiding contacts with monsters.  Monsters, which will later be developed into other players in a multiplayer game, are animate bots, and they have the power to "eat" both the player and treasures.  Once any monster makes a direct contact with the player, the player dies, and the player can restart the game by refreshing the page.  Thus, it is in the player's advantage to act quickly.  As a guide, the shape of the map that the player is in is shown in the upper left corner.
     
         Partial credits of this project is given to John Conway, whose "Game of Life" algorithm helped me come up with an algorithm for randomly-generated contiguous lands.
+        
+        [GAME URL](treasure-hunt.unaux.com)
     
         *[SCREENSHOT 1-8](https://github.com/joos2010kj/Projects/tree/master/JavaScript/Treasure%20Hunt/SS)*
