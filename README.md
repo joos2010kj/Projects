@@ -43,3 +43,20 @@ If you are interested, please feel free to try them yourself by downloading the 
         [GAME URL](http://treasure-hunt.unaux.com)
     
         *[SCREENSHOT 1-8](https://github.com/joos2010kj/Projects/tree/master/JavaScript/Treasure%20Hunt/SS)*
+        
+4. [ALD Point Calculator](https://github.com/joos2010kj/Projects/tree/master/JavaScript/ALD%20Point%20Calculator)
+    - ALD Point Calculator is a system that calculates the number of points required in order for a member to receive an honor cord at the time of his/her graduation.  
+    
+    The point system works such that a member needs to acquire a total of 18 points (3 points * 6 semesters) by graduation, or 3 points per semester if not graduating in a typical four years.  We do not take into account the first semester or the semester an individual was inducted; thus three years worth of points if graduating in four years.  
+    
+    For example, if one was inducted in Fall 2018 and graduating in Fall 2020, then the individual needs 3 points (Spring 2019) + 3 points (Fall 2019) + 3 points (Spring 2020) + 3 points (Fall 2020) = 12 points in total.  
+    
+    I have heard from the board of executives that they are struggling with an excessive number of point calculation requests from members.  On behalf of University of Maryland's Alpha Lambda Delta Honor Society, I have created a point calculator based on the client's input and the retrieved data on members' induction date from the server.
+    
+    Feel free to test it out by entering my information as I am a member of ALD myself.
+    - First name: Hyekang
+    - Last name: Joo
+    - Grad Date: Fall 2020
+    - Required # of Points: 12
+    
+    [Calculator Link](https://go.umd.edu/aldpoints)
