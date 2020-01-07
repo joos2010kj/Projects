@@ -60,3 +60,29 @@ If you are interested, please feel free to try them yourself by downloading the 
     - Required # of Points: 12
     
     [Calculator Link](https://go.umd.edu/aldpoints)
+
+### JAVASCRIPT + PYTHON
+1. [Nitpicker](http://nitpickers.unaux.com/)
+    - Made for the students of University of Maryland, Nitpicker is an application that informs clients of the availability of the courses the clients ordered Nitpicker to check.  Once Nitpicker finds a course with an open seat among the client's wish list, Nitpicker alerts the client through an e-mail.
+    
+    For a more detailed information on how it operates please read below:
+    
+    1) A client needs to make an account for himself/herself at http://nitpickers.unaux.com/ first.  Then the information on the information is sent to Google's Firebase (database).  The JavaScript algorithm performs a duplication check, and determines whether to approve of the new account.  Once approved, then the client may log-in.
+    
+    2) The client enters the information of the course he or she is interested in taking but has no seat left in ALARM SETUP box. The section number (e.g. 0101) is optional, but the client must specify the following three:
+      - Course ID (e.g. CMSC422)
+      - Season (e.g. Spring)
+      - Year (e.g. 2020)
+
+    3) Once the client enters the information, JavaScript and Python algorithm will send the information to Firebase.  Then the data on the course the client signed up for, along with all the other courses the client previously had signed up for, will retrieved from Firebase and will be shown in HISTORY box. If not seen, then please refresh the page.
+
+    4) Now, Nitpicker will be checking all the courses in every client's HISTORY box every 10 minutes.  My Python algorithm, which performs a web-scraping, a determination of whether a course has an open seat (and how many), and an email-sending, is designed to perform the operation every 10 minutes using CRON and Amazon EC2 Instance (Amazon Linux).   Afterwards, Nitpicker e-mails every applicable client (to the email they signed up with) if an open seat is found for the course. Keep in mind that Nitpicker does not email the client if there is no open seat found for the course.
+    
+    Please keep in mind that Nitpicker was christened "Nitpicker" because it "pesters" a client every 10 minutes with an e-mail once it finds an open seat until he or she tells it to STOP.
+
+    Therefore, once he or she receives an email from Nitpicker, it is advised that they try to register the course as soon as possible and then follow the steps below to command it to stop:
+    1) If taken a look at each registered course inside HISTORY box, one could see that each course has an INDEX value (e.g. INDEX: 3).
+    2) Find the course one would like to remove from HISTORY box, and remember the INDEX value of the course.
+    3) Go to REMOVAL box, and enter the number (e.g. 3), and hit submit.
+    Then one will see the course disappear from HISTORY. If somehow everything goes missing in HISTORY box, please refresh the page.
+
