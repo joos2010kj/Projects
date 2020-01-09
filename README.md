@@ -62,7 +62,7 @@ If you are interested, please feel free to try them yourself by downloading the 
     [Calculator Link](https://go.umd.edu/aldpoints)
 
 ### JAVASCRIPT + PYTHON
-1. [Nitpicker](http://nitpickers.unaux.com/)
+1. [Nitpicker](https://github.com/joos2010kj/Projects/tree/master/JavaScript/Nitpicker)
     - Made for the students of University of Maryland, Nitpicker is an application that informs clients of the availability of the courses the clients ordered Nitpicker to check.  Once Nitpicker finds a course with an open seat among the client's wish list, Nitpicker alerts the client through an e-mail.
     
     For a more detailed information on how it operates please read below:
@@ -86,3 +86,4 @@ If you are interested, please feel free to try them yourself by downloading the 
     3) Go to REMOVAL box, and enter the number (e.g. 3), and hit submit.
     Then one will see the course disappear from HISTORY. If somehow everything goes missing in HISTORY box, please refresh the page.
 
+    [Nitpicker Link](http://nitpickers.unaux.com/)
