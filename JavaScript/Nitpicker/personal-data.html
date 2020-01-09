@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Nitpicker - Setup</title>
+        <meta charset="utf-8">
+        <script src='private-data-handler.js' type='text/javascript'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js'></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+        <style>
+            body {
+                background-color: lightsalmon;
+                font-family: Arial, Helvetica, sans-serif;
+                color: black;
+            }
+
+            h1 {
+                padding-top: 3%;
+                padding-bottom: 3%;
+                color: white;
+                margin: 0 auto;
+                width: 30%;
+                text-align: center;
+            }
+
+            ul li {
+                list-style-type: disc; 
+                margin-left: 10%;
+            }
+
+            .inp {
+                margin-left: 10%;
+            }
+
+            .inp-name {
+                margin-left: 10px;
+            }
+
+            #alarm-setup {
+                background-color: aquamarine;
+                border: 8px solid;
+                padding: 3%;
+                margin: 1%;
+                float: left;
+            }
+
+            #history-setup {
+                background-color: beige;
+                border: 8px solid;
+                padding: 3%;
+                margin: 1%;
+                float: left;
+            }
+
+            #removal-setup {
+                background-color: lightgreen;
+                border: 8px solid;
+                padding: 3%;
+                margin: 1%;
+                float: left;
+            }
+
+            #help {
+                border: 8px solid;
+                position: relative;
+                float: left;
+                padding: 3%;
+                margin: 1%;
+                margin-bottom: 5%;
+                background-color: cadetblue;
+            }
+
+            #wrapper {
+                width: 70%;
+                margin: 0 auto;
+            }
+
+            footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height:5%;
+                background-color: blue;
+                color: white;
+                text-align: center;
+            }
+
+            #help-text {
+                font-size: large;
+            }
+
+            #top {
+                border: none;
+                width: 50%;
+                margin: auto;
+                height: 40px;
+                background: linear-gradient(135deg, #ECEDDC 25%, transparent 25%) -20px 0,
+                linear-gradient(225deg, #ECEDDC 25%, transparent 25%) -20px 0,
+                linear-gradient(315deg, #ECEDDC 25%, transparent 25%),
+                linear-gradient(45deg, #ECEDDC 25%, transparent 25%);
+                background-size: 40px 40px;
+                background-color: transparent;
+
+            }
+
+            #bottom {
+                border: none;
+                width: 50%;
+                margin: auto;
+                margin-bottom: 3%;
+                height: 40px;
+                background: linear-gradient(135deg, #ECEDDC 25%, transparent 25%) -20px 0,
+                linear-gradient(225deg, #ECEDDC 25%, transparent 25%) -20px 0,
+                linear-gradient(315deg, #ECEDDC 25%, transparent 25%),
+                linear-gradient(45deg, #ECEDDC 25%, transparent 25%);
+                background-size: 40px 40px;
+                background-color: transparent;
+            }
+        </style>
+    </head>
+    <body>
+        <hr id='top'>
+        <h1>N I T P I C K E R<br /><br />S E T U P</h1>
+        <hr id='bottom'>
+        <div>
+            <div id='wrapper'>
+                <ul id='alarm-setup'>
+                    <h2><u>ALARM SETUP</u></h2>
+                    <li>Course ID (Required): </li><br />
+                    <input id='course' class='inp' type='text' required></input>
+                    <br /><br />
+                    <li>Season (Required): </li><br />
+                    <div id='season'></div>
+                    <br /><br />
+                    <li>Year (Required): </li><br />
+                    <div id='yr'></div>
+                    <br /><br />
+                    <li>Section Number (Optional): </li><br />
+                    <input id='section' type='text' class='inp'></input>
+                    <br /><br />
+                    <button onclick="execute()" class='inp'>Submit</button>
+                </ul>
+                <div id='history-setup'>
+                    <h2><u>HISTORY</u></h2>
+                    <div id='history'></div>
+                </div>
+                <div id='removal-setup'>
+                    <h2><u>REMOVAL</u></h2>
+                    <p>Enter the index (a number) of the alarm you would like to remove:</p>
+                    <input id='removal' type='text'></input>
+                    <button onclick='removeNode()'>Submit</button>
+                </div>
+            </div>
+            <div id='help'>
+                <h2>INSTRUCTIONS:</h2> <br /><br />
+                <div id='help-text'>
+                    Enter the information of the course you are interested in taking but has no seat left in ALARM SETUP box. <br />
+                    The section number (e.g. 0101) is optional, but please make sure to specify the following three: <br />
+                    - Course ID (e.g. CMSC422) <br />
+                    - Season (e.g. Spring) <br />
+                    - Year (e.g. 2020) <br /><br />
+
+                    Once you have entered the information, you will see the course in HISTORY box.  If you don't see, then please refresh the page.
+
+                    <br /><br />
+                    Now, Nitpicker will be checking all the courses you have in your HISTORY box and e-mail you (to the one you signed up with) as soon as an open seat is found for the course.
+                    Please keep in mind that Nitpicker has the name "Nitpicker" because it will be pestering you every 10 minutes with e-mails once it finds an open seat until you tell it to STOP.
+
+                    <br /><br />
+                    Therefore, once you have received an email from Nitpicker, I advise you to register the course as soon as possible and then follow the steps below to command it to stop:<br />
+                    1) If you take a look at each registered course inside HISTORY box, you will see that each course has an INDEX value (e.g. INDEX: 3).  <br />
+                    2) Find the course you would like to remove from HISTORY box, and remember the INDEX value of the course. <br />
+                    3) Go to REMOVAL box, and enter the number (e.g. 3), and hit submit. <br />
+                    Then you will see the course disappear from HISTORY.  If somehow everything goes missing in HISTORY box, please refresh the page.
+                </div>
+            </div>
+        </div>
+    </body>
+    <footer id='copyright'>Copyright</footer>
+</html>
