@@ -15,19 +15,7 @@ If you are interested, please feel free to try them yourself by downloading the 
         *[SCREENSHOT](https://github.com/joos2010kj/Projects/blob/master/Java/Schedule%20Overlapper/Screen%20Shot/SS2.png)*
     
 ### JAVASCRIPT
-1. [Automatic Racecar](https://github.com/joos2010kj/Projects/tree/master/JavaScript/VISION/Automatic%20Racecar)
-    - Automatic Racecar is a project I worked on to make a bot that dodges all the incoming obstacles by itself.  The bot moves in a straight line when there is no obstacle within the sight, and when there is any obstacle, its color will change from green to blue and react accordingly. You can adjust the bot's angle of vision (default angle: 100 degrees) and sight distance (default sight distance: 100px) to see a varying outcome. This is part of VISION Project.
-    
-        *[SCREENSHOT 1](https://github.com/joos2010kj/Projects/blob/master/JavaScript/VISION/Automatic%20Racecar/Screen%20Shot/SS1.png)*
-    
-        *[SCREENSHOT 2](https://github.com/joos2010kj/Projects/blob/master/JavaScript/VISION/Automatic%20Racecar/Screen%20Shot/SS2.png)*
-    
-2. [Follower](https://github.com/joos2010kj/Projects/tree/master/JavaScript/VISION/Follower)
-    - Follower has a character inside that continues to follow the cursor of the client and changes its color when the cursor is within its angle of vision. This is part of VISION Project.
-    
-        *[SCREENSHOT](https://github.com/joos2010kj/Projects/blob/master/JavaScript/VISION/Follower/Screen%20Shot/SS.png)*
-
-3. [Treasure Hunt](https://github.com/joos2010kj/Projects/tree/master/JavaScript/Treasure%20Hunt)
+1. [Treasure Hunt](https://github.com/joos2010kj/Projects/tree/master/JavaScript/Treasure%20Hunt)
     - Treasure Hunt is part of an online multiplayer game project I am currently working on.  In Treasure Hunt, every object is denoted by its own unique color, as following:
     
         - Open Field: BLACK
@@ -44,7 +32,7 @@ If you are interested, please feel free to try them yourself by downloading the 
     
         *[SCREENSHOT 1-8](https://github.com/joos2010kj/Projects/tree/master/JavaScript/Treasure%20Hunt/SS)*
         
-4. [ALD Point Calculator](https://github.com/joos2010kj/Projects/tree/master/JavaScript/ALD%20Point%20Calculator)
+2. [ALD Point Calculator](https://github.com/joos2010kj/Projects/tree/master/JavaScript/ALD%20Point%20Calculator)
     - ALD Point Calculator is a system that calculates the number of points required in order for a member to receive an honor cord at the time of his/her graduation.  
     
     The point system works such that a member needs to acquire a total of 18 points (3 points * 6 semesters) by graduation, or 3 points per semester if not graduating in a typical four years.  We do not take into account the first semester or the semester an individual was inducted; thus three years worth of points if graduating in four years.  
