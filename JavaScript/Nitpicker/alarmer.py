@@ -81,7 +81,7 @@ def send_mail(receipient, txt, course):
     server.starttls()
     server.ehlo()
 
-    server.login('nitpicker.umd@gmail.com', 'mmpassword1')
+    server.login('nitpicker.umd@gmail.com', '*******') # undisclosed
 
     subject = 'UMD Seat Tweeter: Seat Information for {}'.format(course.upper())
     body = txt
@@ -155,7 +155,7 @@ def determine_all(group):
     print('SENDING COMPLETE')
 
 
-firebase = firebase.FirebaseApplication('https://client-info-662d0.firebaseio.com/')
+firebase = firebase.FirebaseApplication('********') # undisclosed
 
 result = firebase.get('/info/', None)
 data = pull_all_info(result)
