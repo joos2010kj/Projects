@@ -1,10 +1,10 @@
+// Copyright Hyekang Joo
+
 let user;
 let historyMap;
 
-function setup() {
-    noCanvas();
-
-    var firebaseConfig = {
+window.onload = () => {
+    let firebaseConfig = {
         apiKey: "AIzaSyB3f3_V8PQtmurY3VCqxeEXNdACmdzHmpA",
         authDomain: "client-info-662d0.firebaseapp.com",
         databaseURL: "https://client-info-662d0.firebaseio.com",
@@ -71,20 +71,30 @@ function setup() {
     copyright.innerText = `Copyright ${String.fromCharCode(169)} ` + 
                           `${new Date().getFullYear()} Hyekang Joo`;
 
+    init();
     show();
-    
 }
 
-function draw() {
-    noLoop();
+// INITIALIZE
+function init() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            console.log('LOGIN SUCCESS');
+        } else {
+            localStorage.setItem('user', null);
+            window.location = './index.html';
+
+            console.log('LOGGED OUT');
+        }
+    });
 }
 
+// HTML DOM
 function store() {
     let course = document.getElementById('course').value;
     let section = document.getElementById('section').value;
     let years = document.getElementsByName('yr');
     let seasons = document.getElementsByName('season');
-
     let year, season;
 
     for (yr of years) {
@@ -99,12 +109,13 @@ function store() {
         }
     }
 
-    return {'course': course, 
-            'section': section, 
-            'year': year, 
-            'season': season};
+    return { 'course': course, 
+             'section': section, 
+             'year': year, 
+             'season': season };
 }
 
+// RETRIEVE THE DATA FROM HTML DOM AND POST INFO
 async function execute() {
     let res = store();
 
@@ -112,57 +123,67 @@ async function execute() {
         res['season'] == undefined || 
         res['year'] == undefined) {
         alert('Please complete the form.');
+
         return;
     }
 
-    console.log(res)
-
     let database = await firebase.database();
     let ref = await database.ref('info')
-    let holder;
+    let holder = false;
     
     ref.on('value', data => {
         holder = data.val();
     }, err => {
         console.log(err);
+
         return;
-    })
+    });
 
-    await new Promise(r => setTimeout(r, 2000));
+    setInterval(() => {
+        if (holder != false) {
+            for (let elm in holder) {
+                let each = holder[elm]; 
 
-    for (let elm in holder) {
-        let each = holder[elm]; 
-        if (each['username'] == user) {
-            let number = each['data']['counter'] + 1;
-            let newCounterValue = number;
-            let newAlarmName = number;
-            let obj = {}
-
-            res['index'] = number;
-            obj[newAlarmName] = res
-
-            database.ref(`info/${elm}/data`).update(obj);
-            database.ref(`info/${elm}/data`).update({'counter': newCounterValue});
-        }
-    }
-
-    alert('It has been successfully added.');
-    location.reload();
+                if (each['username'] == user) {
+                    let number = each['data']['counter'] + 1;
+                    let newCounterValue = number;
+                    let newAlarmName = number;
+                    let obj = {}
+        
+                    res['index'] = number;
+                    obj[newAlarmName] = res;
+        
+                    database.ref(`info/${elm}/data`).update(obj);
+                    database.ref(`info/${elm}/data`).update({'counter': newCounterValue});
+                }
+            }
+        
+            alert('It has been successfully added.');
+            holder = false;
+            location.reload();
+        }  
+    }, 500);
 }
 
+// DISPLAY THE HISTORY SECTION ON HTML
 async function show() {
-    let database = await firebase.database();
-    let ref = await database.ref('info')
-    let holder;
-    
-    ref.on('value', data => {
-        holder = data.val();
-    }, err => {
-        console.log(err);
-        return;
-    })
+    let success = false;
+    let holder = await (new Promise(resolve => {
+        firebase.database()
+            .ref('info')
+            .on('value', snapshot => {
+                success = true;
+                resolve(snapshot.val());
+            }, err => {
+                console.log(err);
 
-    await new Promise(r => setTimeout(r, 2000));
+                resolve(false);
+            });
+    }));
+
+    if (!success) {
+        return;
+    }
 
     let history = document.getElementById('history');
 
@@ -192,46 +213,54 @@ async function show() {
     }
 }
 
+// REMOVE A COURSE FROM HISTORY SECTION
 async function removeNode() {
     let index = document.getElementById('removal').value;
     let database = await firebase.database();
     let ref = await database.ref(`info`);
-    let holder;
+    let success = false;
 
     if (index == undefined || 
         index == '' || 
         isNaN(index) || 
         parseInt(index) <= 0) {
         alert('Please only enter a positive number.');
+        
         return;
     }
 
-    ref.on('value', data => {
-        holder = data.val();
-    }, err => {
-        console.log(err);
-        return;
-    })
+    let holder = await (new Promise(resolve => {
+        ref.on('value', snapshot => {
+                success = true;
+                resolve(snapshot.val());
+            }, err => {
+                console.log(err);
 
-    await new Promise(r => setTimeout(r, 2000));
+                resolve(false);
+            });
+    }));
+
+    if (!success) {
+        return;
+    }
 
     for (let elm in holder) {
         let each = holder[elm]; 
 
         if (each['username'] == user) {
-            ref = await database.ref(`info/${elm}/data/${index}`);
-
-            await new Promise(r => setTimeout(r, 2000));
+            ref = await (new Promise(resolve => {
+                resolve(database.ref(`info/${elm}/data/${index}`));
+            }));
 
             ref.remove()
-            .then(function() {
-                alert("The alarm has been successfully removed.");
-                location.reload();
-            })
-            .catch(function(error) {
-                console.log("Remove failed: " + error.message)
-                location.reload();
-            });
+                .then(() => {
+                    alert("The alarm has been successfully removed.");
+                    location.reload();
+                }).catch(error => {
+                    console.log("Error: " + error.message);
+
+                    location.reload();
+                });
         }
     }
 }
