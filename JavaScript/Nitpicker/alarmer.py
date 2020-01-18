@@ -3,6 +3,10 @@ import requests
 import time
 from bs4 import BeautifulSoup
 from firebase import firebase
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_v1_5
+from Crypto import Random
+from base64 import *
 
 def get_website(course, season, year):
     season = '01' if season.lower() == 'spring' else '08'
@@ -81,7 +85,7 @@ def send_mail(receipient, txt, course):
     server.starttls()
     server.ehlo()
 
-    server.login('nitpicker.umd@gmail.com', '*******') # undisclosed
+    server.login(EMAIL, EMAIL_PW)
 
     subject = 'UMD Seat Tweeter: Seat Information for {}'.format(course.upper())
     body = txt
@@ -111,7 +115,15 @@ def determine(arr):
         
         if inform:
             send_mail(each['receipient'], res[1], course)
-        
+
+def cipher_to_email(cipher):
+    with open(PRIVATE_KEY, 'rb') as f:
+        private_key = f.read()
+
+    decrypted_cipher = decrypt(cipher, private_key)
+
+    return decrypted_cipher
+
 def pull_all_info(result):
   arr = []
 
@@ -124,9 +136,11 @@ def pull_all_info(result):
   return arr
   
 def pull_info(info):
-  email = info['username']
+  email = info['cipher']
   data = info['data']
   
+  email = cipher_to_email(email)
+
   personal_data = []
 
   for each in data.keys():
@@ -154,8 +168,15 @@ def determine_all(group):
 
     print('SENDING COMPLETE')
 
+def decrypt(encrypted_text, private_key):
+    conversion = b64decode(encrypted_text.encode())
+    private_key = RSA.importKey(private_key)
+    RSA_key = PKCS1_v1_5.new(private_key)
+    decrypted_text = RSA_key.decrypt(conversion, 'bollox')
 
-firebase = firebase.FirebaseApplication('********') # undisclosed
+    return decrypted_text
+
+firebase = firebase.FirebaseApplication(FIREBASE)
 
 result = firebase.get('/info/', None)
 data = pull_all_info(result)

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>About Nitpicker</title>
+        <meta charset="utf-8">
+        <style>
+            body {
+                background-color: gray;
+                margin-left: 10%;
+                margin-right: 10%;
+                margin-top: 10%;
+            }
+
+            footer {
+                position: fixed;
+                padding-bottom: 10px;
+                padding-top: 10px;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: black;
+                color: white;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1><u>About Nitpicker</u></h1>
+        <p>
+            Nitpicker is an application that regularly performs the job of checking 
+            the availability of UMD courses for the client.
+            <br /><br />
+
+            If you are unsure if Nitpicker is right for you, see if you fall under any of the following cases
+            because these all require the regular checking of open seats as whoever finds the open seat first is the "winner":
+            <br />
+
+            <ol>
+                <li>You changed the upper level course permission, but the course you got a permission for does not have an open seat.</li>
+                <li>Department placed a “cap” on the course, and the course has no open seat, nor can you be on the waitlist for the course.</li>
+                <li>You are considering taking a course, but you cannot be on the waitlist because of credit limits.</li>
+            </ol>
+            
+            How to use the service: <br />
+            <ol>
+                <li>Go to <a href="http://nitpickers.unaux.com">https://go.umd.edu/nitpicker</a>.</li>
+                <li>Sign up with an email you want to be notified with (every user's information is strongly encrypted through hash).</li>
+                <li>Verify your e-mail.</li>
+                <li>Enter the information of the course you would like checked and hit submit. The detailed instruction will be written in the bottom of the page as well.</li>
+                <li>Just wait! You will be informed over the email (nitpicker.umd@gmail.com) if Nitpicker finds out that there is an open seat for the course.</li>
+            </ol>
+
+            For example, if you set an alarm for CMSC424 Section 0101 (which has 24 waitlists at the moment), 
+            then it will not do anything until the waitlist goes down to 0 and an open seat is found, 
+            at which it will send a notification email to you. This way, you will not have to bother 
+            checking the open seat every day since Nitpicker will do the job for you regularly!
+            <br /><br />
+
+            NOTE: It is called Nitpicker because it will keep notifying you if it finds an open seat 
+            every so often until you tell it to stop on the website. How to command it to stop is shown in the website.
+            <br /><br />
+
+            Please let me know through email (nitpicker.umd@gmail.com) if you are 
+            experiencing any issues with it.
+            <br /><br />
+
+            <a href="http://nitpickers.unaux.com">RETURN</a>
+        </p>
+    </body>
+    <footer id='copyright'></footer>
+    <script>
+        document.getElementById('copyright').innerText = 
+            `Copyright ${String.fromCharCode(169)} ${new Date().getFullYear()} Hyekang Joo`;
+    </script>
+</html>
